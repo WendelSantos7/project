@@ -10,12 +10,11 @@ export default function RegisterScreen() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState<{name?: string; email?: string; phone?: string; password?: string}>({});
+  const [errors, setErrors] = useState<{name?: string; email?: string; phone?: string}>({});
   const [isLoading, setIsLoading] = useState(false);
 
   const validate = () => {
-    const newErrors: {name?: string; email?: string; phone?: string; password?: string} = {};
+    const newErrors: {name?: string; email?: string; phone?: string} = {};
     
     if (!name) {
       newErrors.name = 'Nome é obrigatório';
@@ -33,12 +32,6 @@ export default function RegisterScreen() {
       newErrors.phone = 'Telefone inválido';
     }
     
-    if (!password) {
-      newErrors.password = 'Senha é obrigatória';
-    } else if (!/^\d{10,11}$/.test(password.replace(/\D/g, ''))) {
-      newErrors.password = 'Senha inválida';
-    }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -53,7 +46,6 @@ export default function RegisterScreen() {
       }, 1000);
     }
   };
-
 
   return (
     <PageContainer scrollable keyboardAvoiding>
@@ -93,15 +85,6 @@ export default function RegisterScreen() {
             error={errors.phone}
           />
           
-          <Input
-            label="Senha"
-            placeholder="Sua Senha"
-            value={password}
-            onChangeText={setPassword}
-            keyboardType="visible-password"
-            error={errors.password}
-          />
-
           <Button 
             title="Cadastrar" 
             onPress={handleRegister}
