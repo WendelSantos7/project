@@ -26,10 +26,23 @@ export default function AboutScreen() {
           <Text style={styles.cardText}>
             O EasyRoute tem como missão fornecer treinamento de qualidade para profissionais de entrega e transporte,
             ajudando-os a desenvolver habilidades essenciais para suas carreiras e garantir um serviço de excelência.
-            Nossa plataforma foi desenvolvida pensando nas necessidades específicas dos profissionais do setor de mobilidade,
-            oferecendo conteúdo prático e relevante para o dia a dia de trabalho.
           </Text>
         </Card>
+        
+        <View style={styles.statsRow}>
+          <Card style={styles.statCard}>
+            <Text style={styles.statValue}>10k+</Text>
+            <Text style={styles.statLabel}>Usuários</Text>
+          </Card>
+          <Card style={styles.statCard}>
+            <Text style={[styles.statValue, { color: Colors.secondary.red }]}>3</Text>
+            <Text style={styles.statLabel}>Cursos</Text>
+          </Card>
+          <Card style={styles.statCard}>
+            <Text style={[styles.statValue, { color: Colors.accent.purple }]}>4.8</Text>
+            <Text style={styles.statLabel}>Avaliação</Text>
+          </Card>
+        </View>
         
         <Card style={styles.card}>
           <Text style={styles.cardTitle}>Nossos Cursos</Text>
@@ -37,48 +50,24 @@ export default function AboutScreen() {
             Oferecemos cursos específicos para diferentes áreas de atuação, com conteúdo desenvolvido por especialistas
             e focado nas necessidades reais do mercado.
           </Text>
-          
           <View style={styles.coursesList}>
             <View style={styles.courseItem}>
               <View style={[styles.courseIcon, { backgroundColor: Colors.primary.lightBlue }]}>
                 <Text style={styles.courseIconText}>FC</Text>
               </View>
-              <View style={styles.courseContent}>
-                <Text style={styles.courseTitle}>Entregador de Comida</Text>
-                <Text style={styles.courseDescription}>
-                  Curso completo focado em boas práticas de manipulação de alimentos, 
-                  atendimento ao cliente, rotas eficientes e segurança alimentar. 
-                  Ideal para profissionais que trabalham com delivery de refeições.
-                </Text>
-              </View>
+              <Text style={styles.courseTitle}>Entregador de Comida</Text>
             </View>
-            
             <View style={styles.courseItem}>
               <View style={[styles.courseIcon, { backgroundColor: Colors.secondary.lightRed }]}>
                 <Text style={styles.courseIconText}>EP</Text>
               </View>
-              <View style={styles.courseContent}>
-                <Text style={styles.courseTitle}>Entregador de Produtos</Text>
-                <Text style={styles.courseDescription}>
-                  Treinamento especializado em logística urbana, manuseio de mercadorias, 
-                  documentação de entregas e otimização de rotas. Perfeito para 
-                  profissionais do e-commerce e entregas expressas.
-                </Text>
-              </View>
+              <Text style={styles.courseTitle}>Entregador de Produtos</Text>
             </View>
-            
             <View style={styles.courseItem}>
               <View style={[styles.courseIcon, { backgroundColor: Colors.accent.lightPurple }]}>
                 <Text style={styles.courseIconText}>MP</Text>
               </View>
-              <View style={styles.courseContent}>
-                <Text style={styles.courseTitle}>Motorista Particular</Text>
-                <Text style={styles.courseDescription}>
-                  Programa avançado com foco em excelência no atendimento, 
-                  direção defensiva, conhecimento da cidade e protocolos de segurança. 
-                  Desenvolvido para motoristas de aplicativos e serviços particulares.
-                </Text>
-              </View>
+              <Text style={styles.courseTitle}>Motorista Particular</Text>
             </View>
           </View>
         </Card>
@@ -145,39 +134,51 @@ const styles = StyleSheet.create({
     color: Colors.neutral.darkGray,
     lineHeight: 24,
   },
+  statsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 16,
+  },
+  statCard: {
+    flex: 1,
+    margin: 4,
+    padding: 16,
+    alignItems: 'center',
+  },
+  statValue: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: Colors.primary.blue,
+    marginBottom: 4,
+  },
+  statLabel: {
+    fontSize: 14,
+    color: Colors.neutral.darkGray,
+  },
   coursesList: {
-    marginTop: 24,
+    marginTop: 16,
   },
   courseItem: {
     flexDirection: 'row',
-    marginBottom: 24,
+    alignItems: 'center',
+    marginBottom: 12,
   },
   courseIcon: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: 16,
+    marginRight: 12,
   },
   courseIconText: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold',
     color: Colors.neutral.darkGray,
   },
-  courseContent: {
-    flex: 1,
-  },
   courseTitle: {
-    fontSize: 18,
-    fontWeight: '600',
+    fontSize: 16,
     color: Colors.neutral.black,
-    marginBottom: 8,
-  },
-  courseDescription: {
-    fontSize: 14,
-    color: Colors.neutral.darkGray,
-    lineHeight: 20,
   },
   contactCard: {
     marginBottom: 24,

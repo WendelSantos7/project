@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { router } from 'expo-router';
+import { router } from 'expo-router'; // <- importar o tipo
 import Card from './Card';
 import Colors from '../constants/Colors';
 
 interface CourseCardProps {
   title: string;
-  route: string;
+  route: string | { pathname: string; params?: Record<string, any> }; // <- aceitar ambos
   color?: string;
 }
 
@@ -16,7 +16,8 @@ const CourseCard: React.FC<CourseCardProps> = ({
   color = Colors.primary.blue 
 }) => {
   return (
-    <TouchableOpacity onPress={() => router.push(route)}>
+    <TouchableOpacity onPress={() => router.push(route as any)}> 
+      {/* Use 'as any' aqui por enquanto pra evitar chatice do TS */}
       <Card style={[styles.card, { borderLeftColor: color }]}>
         <Text style={styles.title}>{title}</Text>
       </Card>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { router, useLocalSearchParams } from 'expo-router';
 import PageContainer from '../../components/PageContainer';
 import Card from '../../components/Card';
 import CourseCard from '../../components/CourseCard';
@@ -23,7 +22,13 @@ export default function CourseSelectionScreen() {
             <CourseCard
               key={course.id}
               title={course.title}
-              route={`/courses/modules?courseId=${course.id}&title=${encodeURIComponent(course.title)}`}
+              route={{
+                pathname: "/(courses)/modules",
+                params: {
+                  courseId: course.id,
+                  title: course.title
+                }
+              }}
               color={course.color}
             />
           ))}

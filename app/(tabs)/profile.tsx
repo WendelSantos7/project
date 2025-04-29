@@ -1,16 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { router } from 'expo-router';
 import PageContainer from '../../components/PageContainer';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
 import Colors from '../../constants/Colors';
 
 export default function ProfileScreen() {
-  const handleLogout = () => {
-    router.replace('/(auth)/login');
-  };
-
   return (
     <PageContainer scrollable>
       <View style={styles.container}>
@@ -43,7 +38,6 @@ export default function ProfileScreen() {
             title="Editar Perfil"
             variant="primary"
             style={styles.editButton}
-            onPress={() => router.push('/(profile)/edit')}
           />
         </Card>
         
@@ -67,13 +61,6 @@ export default function ProfileScreen() {
             <Text style={styles.courseTitle}>Motorista Particular</Text>
           </View>
         </Card>
-
-        <Button
-          title="Sair"
-          variant="secondary"
-          onPress={handleLogout}
-          style={styles.logoutButton}
-        />
       </View>
     </PageContainer>
   );
@@ -175,8 +162,5 @@ const styles = StyleSheet.create({
   progressText: {
     fontSize: 14,
     color: Colors.neutral.darkGray,
-  },
-  logoutButton: {
-    marginTop: 8,
   },
 });

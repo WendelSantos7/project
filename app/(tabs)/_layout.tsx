@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tabs } from 'expo-router';
-import { Chrome as Home, CircleUser as UserCircle, Info } from 'lucide-react-native';
+import { Home, UserCircle, Info } from 'lucide-react-native';
 import Colors from '../../constants/Colors';
 
 export default function TabLayout() {

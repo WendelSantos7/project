@@ -28,7 +28,13 @@ export default function CourseContentScreen() {
   };
   
   const handleTestPress = () => {
-    router.push(`/courses/test?courseId=${courseId}&moduleId=${moduleId}`);
+    router.push({
+      pathname: "/(courses)/test",
+      params: {
+        courseId: courseId,
+        moduleId: moduleId
+      }
+    });
   };
   
   const courseColor = getCourseColor();
@@ -104,8 +110,15 @@ export default function CourseContentScreen() {
                 const prevId = (parseInt(moduleId) - 1).toString();
                 const prevModule = courseModules.find(m => m.id === prevId);
                 if (prevModule) {
-                  router.push(`/courses/content?moduleId=${prevId}&courseId=${courseId}&title=${encodeURIComponent(prevModule.title)}`);
-                }
+                  router.push({
+                    pathname: "/(courses)/content",
+                    params: {
+                      moduleId: prevId,
+                      courseId: courseId,
+                      title: title,
+                    }
+                  });
+                  }
               }}
             />
             <Button
@@ -117,8 +130,15 @@ export default function CourseContentScreen() {
                 const nextId = (parseInt(moduleId) + 1).toString();
                 const nextModule = courseModules.find(m => m.id === nextId);
                 if (nextModule) {
-                  router.push(`/courses/content?moduleId=${nextId}&courseId=${courseId}&title=${encodeURIComponent(nextModule.title)}`);
-                }
+                  router.push({
+                    pathname: "/(courses)/content",
+                    params: {
+                      moduleId: nextId,
+                      courseId: courseId,
+                      title: title,
+                    }
+                  });
+                  }
               }}
             />
           </View>
